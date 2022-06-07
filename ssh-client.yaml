@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joe-ssh-client
+  namespace: joe-private
+  labels:
+    app: joe-ssh-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: joe-ssh-client
+  template:
+    metadata:
+      labels:
+        app: joe-ssh-client
+    spec:
+      containers:
+      - name: joe-ssh-client
+        image: kroniak/ssh-client:3.15
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh"]
+        args: ["-c", "sleep 1000d"]

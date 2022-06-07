@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox
+  namespace: joe-private
+  labels:
+    app: joe-busybox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: joe-busybox
+  template:
+    metadata:
+      labels:
+        app: joe-busybox
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command:
+            - sleep
+            - "3600"
