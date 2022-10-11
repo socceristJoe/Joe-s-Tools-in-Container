@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joeubuntu
+  namespace: joe-private
+  labels:
+    app: joeubuntu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: joeubuntu
+  template:
+    metadata:
+      labels:
+        app: joeubuntu
+    spec:
+      containers:
+        - name: joeubuntu
+          image: ubuntu:20.04
+          command:
+            - "sleep"
+            - "90d"
